@@ -779,3 +779,7 @@ path = "scripts/test_dispatch_panel_claim_audit.py"
 [[pytest]]
 id = "1078-author-letter"
 path = "scripts/test_check_author_letter.py"
+
+[[pytest]]
+id = "1149-tier2-sampling-prompt-sync"
+path = "scripts/test_tier2_sampling_prompt_sync.py"

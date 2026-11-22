@@ -184,11 +184,11 @@ For every source in the bibliography, query the Semantic Scholar API:
 - Check: DOI resolves to a real page, title matches, authors match
 - Auto-flag: DOI returns 404 or title mismatch > 3 words
 
-#### Tier 2: WebSearch Spot-Check (50% coverage)
-- Randomly select 50% of sources for WebSearch verification
+#### Tier 2: WebSearch Spot-Check
+- First include every reference that Tier 0 requires to proceed to Tier 2 and every tier_3 and tier_4 source. Verify each selected reference once, including when both rules select it. Also include here a reference that passed Tier 0 and is flagged for another reason, and verify it once.
+- Then randomly select from the remaining eligible tier_1 and tier_2 sources until the selection includes at least half of all bibliography references, rounding a fraction up. A tier_1 or tier_2 reference that passed Tier 0 and is not flagged is not eligible and skips Tier 2. If the mandatory set already meets that minimum, verify the entire mandatory set. If too few eligible references remain to reach half, verify every remaining eligible reference, and do not add an unflagged Tier 0 pass to fill the half. Skipping Tier 0 because the Semantic Scholar API is unavailable produces no per-reference Tier 0 failure, so the mandatory set is then only the tier_3 and tier_4 sources and the tier_1 and tier_2 sources stay eligible. Actual coverage is the number of distinct references a WebSearch check was performed on, divided by all bibliography references. A selected reference that was not checked adds nothing to actual coverage.
 - Search: `"{exact title}" {first author last name} {year}`
 - Verify: source exists, is published in the claimed venue, year matches
-- Priority sampling: verify ALL tier_3 and tier_4 sources first, then sample from tier_1/tier_2
 
 #### Red Flags for Hallucinated References
 Flag immediately if ANY of:

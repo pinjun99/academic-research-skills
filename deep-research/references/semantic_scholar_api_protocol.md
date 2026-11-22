@@ -50,9 +50,9 @@ Used when re-verifying a reference that was previously resolved to a Semantic Sc
 |------|--------|----------|---------|
 | **Tier 0 (NEW)** | Semantic Scholar API | 100% of references | Programmatic existence check + metadata extraction |
 | Tier 1 | DOI resolution | 100% of DOI-bearing refs | URL-level existence check |
-| Tier 2 | WebSearch spot-check | 50% of sources | Human-readable verification |
+| Tier 2 | WebSearch spot-check | Every reference Tier 0 requires to proceed to Tier 2 and every tier_3 and tier_4 source, then remaining eligible tier_1 and tier_2 sources until at least half of all bibliography references, rounding a fraction up | Human-readable verification |
 
-**Execution order**: Tier 0 first (batch, 1 req/sec). References that PASS Tier 0 skip Tier 2 unless flagged for other reasons. References that FAIL Tier 0 proceed to Tier 1 + Tier 2 for manual investigation.
+**Execution order**: Tier 0 first (batch, 1 req/sec). References that PASS Tier 0 skip Tier 2 unless they are tier_3 or tier_4 or flagged for other reasons. A tier_1 or tier_2 pass is not eligible for the random sample; a flagged reference is in the mandatory set before that sample. References that FAIL Tier 0 proceed to Tier 1 + Tier 2 for manual investigation. Actual coverage is the number of distinct references a WebSearch check was performed on, divided by all bibliography references.
 
 ---
 

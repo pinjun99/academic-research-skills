@@ -9,6 +9,6 @@ Unified definitions to prevent inconsistency across agents.
 | **CRITICAL severity** | IRON RULE: Issue that, if unresolved, would invalidate a core conclusion or constitute academic misconduct. Requires immediate resolution before pipeline can proceed | All agents |
 | **Source Tier** | tier_1 = top-quartile peer-reviewed journal; tier_2 = other peer-reviewed; tier_3 = academic but not peer-reviewed; tier_4 = grey literature | bibliography_agent, source_verification_agent |
 | **Minimum Source Count** | full = 15+, quick = 5-8, lit-review = 25+, systematic-review = all eligible (no limit), fact-check = 3+ per claim | bibliography_agent |
-| **Verification Threshold** | 100% DOI check + 50% WebSearch spot-check | source_verification_agent, ethics_review_agent |
+| **Verification Threshold** | 100% DOI check + WebSearch spot-check. The source verifier first includes every reference Tier 0 requires to proceed to Tier 2 and every tier_3 and tier_4 source, then samples the remaining eligible tier_1 and tier_2 sources until the selection includes at least half of all bibliography references, rounding a fraction up. Actual coverage is the number of distinct references a WebSearch check was performed on, divided by all bibliography references. The ethics reviewer keeps its own minimum of at least 50% of all cited references | source_verification_agent, ethics_review_agent |
 
 > **Cross-Skill Reference**: See `shared/handoff_schemas.md` for inter-stage data exchange formats.
